@@ -21,7 +21,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
    
     
-    @IBAction func LogInButtonPressed(_ sender: UIButton) {
+    @IBAction func SignUpButtonPressed(_ sender: UIButton) {
         
         if (emailTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false) {
             
@@ -31,6 +31,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     print(error!)
                 } else {
                     print("Registration Successful")
+                    self.performSegue(withIdentifier: "goToNewsFeed", sender: self)
                 }
                 
             }
@@ -40,6 +41,28 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         
     }
+    
+    
+    @IBAction func logInButtonPressed(_ sender: UIButton) {
+        
+        if (emailTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false) {
+            
+            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
+                
+                if error != nil {
+                    print("Problem in logging in \(String(describing: error))")
+                } else {
+                    print("\(String(describing: result?.user )) logged in")
+                    self.performSegue(withIdentifier: "goToNewsFeed", sender: self)
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +94,7 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 print(error!)
             } else {
                 print("Registration Successful")
+                self.performSegue(withIdentifier: "goToNewsFeed", sender: self)
             }
         }
         
