@@ -11,6 +11,7 @@
 		1A220BEE21D898CC001B546F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A220BED21D898CC001B546F /* LogInViewController.swift */; };
 		1A220BF221D89A0A001B546F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A220BF121D89A0A001B546F /* GoogleService-Info.plist */; };
 		1A22DFF521DA38CD00AF1601 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22DFF421DA38CD00AF1601 /* NewsFeedTableViewCell.swift */; };
+		1A22DFF721DA59BC00AF1601 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22DFF621DA59BC00AF1601 /* ArticleDetailViewController.swift */; };
 		1A4914AA21D8925200888E32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4914A921D8925200888E32 /* AppDelegate.swift */; };
 		1A4914AF21D8925200888E32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4914AD21D8925200888E32 /* Main.storyboard */; };
 		1A4914B121D8925300888E32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A4914B021D8925300888E32 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		1A220BED21D898CC001B546F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1A220BF121D89A0A001B546F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A22DFF421DA38CD00AF1601 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsFeedTableViewCell.swift; path = HackerNews/Controller/NewsFeedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		1A22DFF621DA59BC00AF1601 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		1A4914A621D8925200888E32 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4914A921D8925200888E32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A4914AE21D8925200888E32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		1A220BEC21D897F5001B546F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1A22DFF621DA59BC00AF1601 /* ArticleDetailViewController.swift */,
 				1A220BED21D898CC001B546F /* LogInViewController.swift */,
 				1A4D12D121D8C78300833B82 /* NewsFeedTableViewController.swift */,
 			);
@@ -264,6 +267,7 @@
 			files = (
 				1A064FF521D9EC4D009A3972 /* Article.swift in Sources */,
 				1A220BEE21D898CC001B546F /* LogInViewController.swift in Sources */,
+				1A22DFF721DA59BC00AF1601 /* ArticleDetailViewController.swift in Sources */,
 				1A4D12D221D8C78300833B82 /* NewsFeedTableViewController.swift in Sources */,
 				1A22DFF521DA38CD00AF1601 /* NewsFeedTableViewCell.swift in Sources */,
 				1A4914AA21D8925200888E32 /* AppDelegate.swift in Sources */,

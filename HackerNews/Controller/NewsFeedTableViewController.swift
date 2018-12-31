@@ -14,7 +14,7 @@ class NewsFeedTableViewController: UITableViewController {
     let apiBaseURL = "https://hacker-news.firebaseio.com/v0/topstories.json"
     let articleURLBase = "https://hacker-news.firebaseio.com/v0/item/"
     var articles: [Article] = [ ]
-    
+    var articleURL: String?
     
 
     override func viewDidLoad() {
@@ -66,6 +66,33 @@ class NewsFeedTableViewController: UITableViewController {
         cell.otherDetailLabel.text = " Score:- \(articles[indexPath.row].score!)     Total Comments:- \(articles[indexPath.row].descendants!) "
 
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        articleURL = articles[indexPath.row].url
+        
+        
+        
+        self.performSegue(withIdentifier: "goToArticleDetail", sender: indexPath.row)
+        
+    }
+    
+    // MARK:- Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToArticleDetail" {
+            
+            let destinationVC = segue.destination as! ArticleDetailViewController
+            
+            destinationVC.url = articleURL
+            
+        }
+        
     }
     
 

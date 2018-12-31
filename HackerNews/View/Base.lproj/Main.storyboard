@@ -151,10 +151,52 @@
                         </barButtonItem>
                     </navigationItem>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="txD-8u-Rih" kind="show" identifier="goToArticleDetail" id="CA4-lF-TuE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wby-hm-yDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1896.8" y="109.29535232383809"/>
+        </scene>
+        <!--Article Detail View Controller-->
+        <scene sceneID="OsX-GF-0jw">
+            <objects>
+                <viewController id="txD-8u-Rih" customClass="ArticleDetailViewController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Orh-5c-EUm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="X8A-1G-82B">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <subviews>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiA-oc-foc">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="X8A-1G-82B" firstAttribute="top" secondItem="Z3q-e4-A46" secondAttribute="top" id="MRR-xE-phU"/>
+                            <constraint firstItem="Z3q-e4-A46" firstAttribute="trailing" secondItem="X8A-1G-82B" secondAttribute="trailing" id="cFy-y3-HAM"/>
+                            <constraint firstItem="Z3q-e4-A46" firstAttribute="bottom" secondItem="X8A-1G-82B" secondAttribute="bottom" id="fIj-i6-BUL"/>
+                            <constraint firstItem="X8A-1G-82B" firstAttribute="leading" secondItem="Z3q-e4-A46" secondAttribute="leading" id="rMt-vU-cCN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z3q-e4-A46"/>
+                    </view>
+                    <connections>
+                        <outlet property="articleWebView" destination="UiA-oc-foc" id="No1-KD-Fjc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XDb-O5-rii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2658" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BIG-H8-31I">
