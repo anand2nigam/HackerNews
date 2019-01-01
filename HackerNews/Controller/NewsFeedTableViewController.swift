@@ -15,6 +15,7 @@ class NewsFeedTableViewController: UITableViewController {
     let articleURLBase = "https://hacker-news.firebaseio.com/v0/item/"
     var articles: [Article] = [ ]
     var articleURL: String?
+    var commentIDs: [ Int]? = [ ]
     
 
     override func viewDidLoad() {
@@ -75,6 +76,8 @@ class NewsFeedTableViewController: UITableViewController {
         
         articleURL = articles[indexPath.row].url
         
+        commentIDs = articles[indexPath.row].kids
+        
         
         
         self.performSegue(withIdentifier: "goToArticleDetail", sender: indexPath.row)
@@ -90,6 +93,8 @@ class NewsFeedTableViewController: UITableViewController {
             let destinationVC = segue.destination as! ArticleDetailViewController
             
             destinationVC.url = articleURL
+            destinationVC.topComments = commentIDs
+            
             
         }
         
@@ -130,6 +135,8 @@ class NewsFeedTableViewController: UITableViewController {
                 let score = json.score ?? 0
                 let type = json.type
                 let url = json.url ?? ""
+                
+                
                 
                  //Create new article from JSON
                 let article = Article(by: author, descendants: comments, id: json.id, kids: kids, score: score , time: json.time , title: json.title, type: type, url: url)
