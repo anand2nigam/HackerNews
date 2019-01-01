@@ -69,6 +69,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PsI-1k-1cl"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="googleSignInTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="oWU-0J-RE7"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,6 +150,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="c2N-k3-Cee">
                             <connections>
                                 <action selector="logOutButtonPressed:" destination="vzE-FA-fd9" id="aOp-3Y-OjQ"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMainScreen" id="Nyq-Sl-KEq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -178,12 +182,12 @@
                                             <wkPreferences key="preferences"/>
                                         </wkWebViewConfiguration>
                                     </wkWebView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-fa-lCy">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-fa-lCy">
                                         <rect key="frame" x="0.0" y="280.5" width="375" height="270.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" textLabel="5CF-RX-G1L" rowHeight="76" style="IBUITableViewCellStyleDefault" id="1ZC-aS-AML">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="76"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="375" height="76"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1ZC-aS-AML" id="ITl-K2-21r">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>

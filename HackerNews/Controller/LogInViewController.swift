@@ -12,14 +12,19 @@ import GoogleSignIn
 
 class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
-
     
-
+    @IBAction func googleSignInTapped(_ sender: GIDSignInButton) {
+        
+        GIDSignIn.sharedInstance()?.signIn()
+        
+    }
+    
+    
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-   
+    
     
     @IBAction func SignUpButtonPressed(_ sender: UIButton) {
         
@@ -66,16 +71,16 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-        GIDSignIn.sharedInstance()?.signIn()
+        
         
     }
     
-
+    
     // MARK:-  Delegate Method of GoogleSignIn
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -109,6 +114,6 @@ class LogInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             print("An error occurred while signing out")
         }
     }
-
-
+    
+    
 }

@@ -10,9 +10,9 @@ import UIKit
 import WebKit
 
 class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
-
     
-
+    
+    
     var url: String?
     var topComments: [Int]? = [ ]
     var comments: [Comment] = [ ]
@@ -22,7 +22,7 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
     
     @IBOutlet weak var commentTableView: UITableView!
     
- 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +38,16 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
         }
         
         
-        if topComments != nil {
-        getTopComments()
-        
-        self.commentTableView.register(UITableViewCell.self, forCellReuseIdentifier: "commentCell")
-        self.commentTableView.delegate = self
-        self.commentTableView.dataSource = self
-        
+        if topComments?.isEmpty == false {
+            
+            getTopComments()
+            
+            self.commentTableView.register(UITableViewCell.self, forCellReuseIdentifier: "commentCell")
+            self.commentTableView.delegate = self
+            self.commentTableView.dataSource = self
+            
+        } else {
+            commentTableView.isHidden = true
         }
         // Do any additional setup after loading the view.
         
@@ -69,7 +72,7 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
         return cell
     }
     
-
+    
     // MARK:- Networking and JSON Parsing
     
     func getTopComments() {
@@ -81,12 +84,12 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
         }
         
     }
-
+    
     func getCommentData(id: Int) {
         
         guard let commentURL = URL(string: "\(baseURL)\(id).json") else { return }
         
-        print(commentURL)
+        //  print(commentURL)
         
         URLSession.shared.dataTask(with: commentURL) { (data, response, error) in
             
@@ -95,7 +98,7 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
             do {
                 let commentResponse = try JSONDecoder().decode(Comment.self, from: data)
                 
-                print(commentResponse)
+                // print(commentResponse)
                 
                 self.comments.append(commentResponse)
                 
@@ -105,12 +108,12 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
                     self.commentTableView.reloadData()
                 }
             }
-            
+                
             catch {
                 print("error in getting comments")
             }
             
-        }.resume()
+            }.resume()
         
         
     }
@@ -137,7 +140,7 @@ class ArticleDetailViewController: UIViewController, WKNavigationDelegate, UITab
         
     }
     
-
+    
 }
 
 

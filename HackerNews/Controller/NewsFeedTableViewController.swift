@@ -17,7 +17,7 @@ class NewsFeedTableViewController: UITableViewController {
     var articleURL: String?
     var commentIDs: [ Int]? = [ ]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,14 +26,15 @@ class NewsFeedTableViewController: UITableViewController {
         
         
         
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    // MARK:- Logging Out
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -43,18 +44,18 @@ class NewsFeedTableViewController: UITableViewController {
             print("Error in Logging Out")
         }
         
-        //performSegue(withIdentifier: "backToMainScreen", sender: self)
+        performSegue(withIdentifier: "backToMainScreen", sender: self)
         
     }
     
     // MARK: - TableView DataSource Methods
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return articles.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsFeedCell", for: indexPath) as! NewsFeedTableViewCell
@@ -63,9 +64,9 @@ class NewsFeedTableViewController: UITableViewController {
         
         
         cell.mainDetailLabel.text = articles[indexPath.row].title + "\n\(articles[indexPath.row].by!)   \(convert(unixTime: articles[indexPath.row].time!))"
-
+        
         cell.otherDetailLabel.text = " Score:- \(articles[indexPath.row].score!)     Total Comments:- \(articles[indexPath.row].descendants!) "
-
+        
         return cell
     }
     
@@ -100,7 +101,7 @@ class NewsFeedTableViewController: UITableViewController {
         
     }
     
-
+    
     // MARK:- Networking and JSON Parsing
     
     private func getTopStoriesArray() {
@@ -111,7 +112,7 @@ class NewsFeedTableViewController: UITableViewController {
             guard let data = data else { return }
             
             if let topArticlesArray = try? JSONDecoder().decode([Int].self, from: data) {
-                let chunk = topArticlesArray.chunked(into: 100) // 500 articles are received from API
+                let chunk = topArticlesArray.chunked(into: 200) // 500 articles are received from API
                 _ = chunk[0].map { self.getArticle(id: String($0)) }
             }
             }.resume()
@@ -120,7 +121,7 @@ class NewsFeedTableViewController: UITableViewController {
     private func getArticle(id: String) {
         let articleId = id
         guard let url = URL(string: "\(articleURLBase)\(articleId).json") else { return }
-        print(url)
+        // print(url)
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
@@ -138,12 +139,12 @@ class NewsFeedTableViewController: UITableViewController {
                 
                 
                 
-                 //Create new article from JSON
+                //Create new article from JSON
                 let article = Article(by: author, descendants: comments, id: json.id, kids: kids, score: score , time: json.time , title: json.title, type: type, url: url)
                 // Add article to data source for tableview
                 self.articles.append(article)
-               // print(article)
-               // print(self.articles)
+                // print(article)
+                // print(self.articles)
                 // Jump to main thread and reload tableview
                 DispatchQueue.main.sync {
                     self.tableView.reloadData()
@@ -165,9 +166,9 @@ class NewsFeedTableViewController: UITableViewController {
             dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
             dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
             dateFormatter.timeZone = TimeZone.current
-             localTime = dateFormatter.string(from: date)
+            localTime = dateFormatter.string(from: date)
             
-           // print(localTime)
+            // print(localTime)
             
             
         }
