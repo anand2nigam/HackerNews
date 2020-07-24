@@ -28,7 +28,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.681705676356-s5ralip1qgkf81rtuvc8u79ltfshd03p</string>
+				<string>Enter your google client id</string>
 			</array>
 		</dict>
 	</array>
